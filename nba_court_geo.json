@@ -1,0 +1,146 @@
+{
+  "type": "Feature",
+  "height": "470",
+  "width": "500",
+  "geometry": {
+    "type": "GeometryCollection",
+    "geometries": [
+      {
+      "type": "LineString",
+      "coordinates": [
+        [-220, 0],
+        [-220, 70]
+      ]
+    }, 
+    {
+      "type": "LineString",
+      "coordinates": [
+        [220, 0], 
+        [220, 70]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [-80, 0],
+        [-80, 190]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [80, 0],
+        [80, 190]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [-80, 190],
+        [80, 190]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [-250, 280],
+        [-220, 280]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [220, 280],
+        [250, 280]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [-110, 0],
+        [-110, 8]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [110, 0],
+        [110, 8]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [-80, 70],
+        [-88, 70]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [80, 70],
+        [88, 70]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [-80, 80],
+        [-88, 80]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [80, 80],
+        [88, 80]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [-80, 110],
+        [-88, 110]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [80, 110],
+        [88, 110]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [-80, 140],
+        [-88, 140]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [80, 140],
+        [88, 140]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [-80, 160],
+        [-88, 160]
+      ]
+    },
+    {
+      "type": "LineString",
+      "coordinates": [
+        [-30, 40],
+        [30, 40]
+      ]
+    }
+  ]
+  }, 
+  "properties": {
+    "name": "null island"
+  }
+}
