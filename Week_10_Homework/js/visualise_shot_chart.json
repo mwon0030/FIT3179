@@ -27,7 +27,7 @@
                   {
                       "LOC_X": 0,
                       "LOC_Y": 180,
-                      "image": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Week%2010%20Homework/data/nba_court.jpg"
+                      "image": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Week_10_Homework/data/nba_court.jpg"
                   }
               ]
           },
@@ -52,7 +52,7 @@
       },
       {
           "data": {
-              "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Week%2010%20Homework/data/shotchartdetail.csv"
+              "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Week_10_Homework/data/shotchartdetail.csv"
           },
           "transform": [
               {
