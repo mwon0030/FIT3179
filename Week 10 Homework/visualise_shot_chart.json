@@ -1,0 +1,184 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "NBA Shot Chart 2015-16 Regular Season",
+  "height": 560,
+  "width": 500,
+  "params": [
+              {
+                  "name": "Player_selection",
+                  "bind": {
+                      "input": "select",
+                      "options": [
+                          null,
+                          "James Harden", "Anthony Davis", "LeBron James", "Kevin Durant", "Stephen Curry", "Russell Westbrook", "Blake Griffin", "Kawhi Leonard", "Rudy Gobert", "Danny Green"
+                      ],
+                      "labels": [
+                          "Show All",
+                          "James Harden", "Anthony Davis", "LeBron James", "Kevin Durant", "Stephen Curry", "Russell Westbrook", "Blake Griffin", "Kawhi Leonard", "Rudy Gobert", "Danny Green"
+                      ],
+                      "name": "Select player: "
+                  }
+              }
+          ],
+  "layer": [
+      {
+          "data": {
+              "values": [
+                  {
+                      "LOC_X": 0,
+                      "LOC_Y": 180,
+                      "image": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/nba_court.jpg"
+                  }
+              ]
+          },
+          "mark": {
+              "type": "image",
+              "height": 470,
+              "width": 500
+          },
+          "encoding": {
+              "x": {
+                  "field": "LOC_X",
+                  "type": "quantitative"
+              },
+              "y": {
+                  "field": "LOC_Y",
+                  "type": "quantitative"
+              },
+              "url": {
+                  "field": "image"
+              }
+          }
+      },
+      {
+          "data": {
+              "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/shotchartdetail.csv"
+          },
+          "transform": [
+              {
+                  "calculate": "{0: 'Missed', 1: 'Scored'}[datum.SHOT_MADE_FLAG]",
+                  "as": "SHOT_MADE_FLAG"
+              },
+              {
+                  "filter": "Player_selection == null || datum.PLAYER_NAME == Player_selection"
+              },
+              {
+                  "filter": "datum.LOC_Y <= 412.5"
+              },
+              {
+                  "calculate": "datum.LOC_X * datum.LOC_X + datum.LOC_Y * datum.LOC_Y",
+                  "as": "Shot_distance"
+              }
+          ],
+          "encoding": {
+              "x": {
+                  "field": "LOC_X",
+                  "type": "quantitative",
+                  "axis": {
+                      "grid": false,
+                      "ticks": false,
+                      "domain": false,
+                      "labels": false,
+                      "title": null
+                  },
+                  "scale": {
+                      "domain": [-250, 250]
+                  }
+              },
+              "y": {
+                  "field": "LOC_Y",
+                  "type": "quantitative",
+                  "axis": {
+                      "grid": false,
+                      "ticks": false,
+                      "domain": false,
+                      "labels": false,
+                      "title": null
+                  },
+                  "scale": {
+                      "domain": [-52.5,417.5]
+                  }
+              }
+          },
+          "layer": [
+              {
+                  "mark": {
+                      "type": "circle",
+                      "tooltip": {
+                          "content": "encoding"
+                      }
+                  },
+                  "encoding": {
+                      "color": {
+                          "field": "SHOT_MADE_FLAG",
+                          "title": "Field Goal Status",
+                          "scale": {
+                              "domain": ["Missed", "Scored"], 
+                              "range": ["#8e7cc3", "#2acab0"]
+                          }
+                      },
+                      "tooltip": [
+                          {
+                              "field": "LOC_X",
+                              "type": "quantitative",
+                              "title": "Location X"
+                          },
+                          {
+                              "field": "LOC_Y",
+                              "type": "quantitative",
+                              "title": "Location Y"
+                          },
+                          {
+                              "field": "PLAYER_NAME",
+                              "type": "nominal",
+                              "title": "Player Name"
+                          }
+                      ]
+                  }
+              },
+              {
+                  "mark": {
+                      "type": "text",                    
+                      "align": "right",
+                      "baseline": "middle",
+                      "dx": -12,
+                      "fontSize": 11,
+                      "fontStyle": "italic"
+                  },
+                  "encoding": {
+                      "text": {
+                          "value": "Longest shot by each player"
+                      },
+                      "color": {
+                          "value": "black"
+                      },
+                      "opacity": {
+                          "condition": {
+                              "test": "datum['LONGEST_SHOT_FLAG'] == 1",
+                              "value": 1
+                          },
+                          "value": 0
+                      },
+                      "tooltip": [
+                          {
+                              "field": "LOC_X",
+                              "type": "quantitative",
+                              "title": "Location X"
+                          },
+                          {
+                              "field": "LOC_Y",
+                              "type": "quantitative",
+                              "title": "Location Y"
+                          },
+                          {
+                              "field": "PLAYER_NAME",
+                              "type": "nominal",
+                              "title": "Player Name"
+                          }
+                      ]
+                  }
+              }
+          ]
+      }
+  ]
+}
