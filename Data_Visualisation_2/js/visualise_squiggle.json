@@ -1,0 +1,55 @@
+{
+    "schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Team offensive and defense rating change throughout the season",
+    "height": "500",
+    "width": "500",
+    "data": {
+        "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Week_10_Homework/data/boxscore.csv"
+    },
+    "transform": [
+        {
+            "filter": "datum['TEAM_NAME'] == 'Rockets' || datum['TEAM_NAME'] == 'Warriors' || datum['TEAM_NAME'] == 'Cavaliers' || datum['TEAM_NAME'] == 'Spurs' || datum['TEAM_NAME'] == 'Clippers' || datum['TEAM_NAME'] == 'Thunder'",
+            "as": "team_filter"
+        }
+    ],
+    "params": [
+        {
+            "name": "select_team",
+            "select": "point"
+        }
+    ],
+    "encoding": {
+                "x": {
+                    "field": "10GAME_AVG_DEF_RATING",
+                    "type": "quantitative",
+                    "title": "Defensive Rating",
+                    "scale": {
+                        "domain": [85,115]
+                    }
+                },
+                "y": {
+                    "field": "10GAME_AVG_OFF_RATING",
+                    "type": "quantitative",
+                    "title": "Offensive Rating",
+                    "scale": {
+                        "domain": [85,125]
+                    }
+                }
+    },
+    "layer": [
+        {
+            "mark": {
+                "type": "line"
+            },
+            "encoding": {
+                "color": {
+                    "condition": {
+                        "param": "select_team",
+                        "field": "TEAM_NAME"
+                    },
+                    "value": "#eeeeee"
+                }
+            }
+        }
+    ]
+}
