@@ -1,1 +1,41 @@
-/*Placeholder*/
+#container1 {
+    position: relative;
+    height: 650px;
+    display: grid;
+    place-items: center;
+  }
+  
+  #shot_chart {
+    top: 0%;
+  
+    display: grid;
+    place-items: center;
+  }
+
+#container2 {
+    position: relative;
+    height: 600px;
+    display: grid;
+    place-items: center;
+  }
+  
+  #squiggle {
+    top: 0%;
+  
+    display: grid;
+    place-items: center;
+  }
+
+#container3 {
+    position: relative;
+  
+    display: grid;
+    place-items: center;
+  }
+  
+  #radar {
+    top: 0%;
+  
+    display: grid;
+    place-items: center;
+  }

@@ -10,27 +10,35 @@
 <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 </head>
 <body>
-<div id="shot_chart">
-<script type="text/javascript">
+<div id = "container1">
+<div id = "shot_chart">
+<script type = "text/javascript">
     var vg_1 = "js/visualise_shot_chart.json";
     vegaEmbed("#shot_chart", vg_1).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 </script>
 </div>
-<div id = "squiggle"></div>
-<script type="text/javascript">
+</div>
+<div id = "container2">
+<div id = "squiggle">
+<script type = "text/javascript">
     var vg_2 = "js/visualise_squiggle.json";
     vegaEmbed("#squiggle", vg_2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 </script>
-<div id = "radar"></div>
-<script type="text/javascript">
+</div>
+</div>
+<div id = "container3">
+<div id = "radar">
+<script type = "text/javascript">
     var vg_3 = "js/visualise_radar.json";
     vegaEmbed("#radar", vg_3).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 </script>
+</div>
+</div>
 </body>
 </html>

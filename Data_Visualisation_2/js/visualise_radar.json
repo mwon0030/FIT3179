@@ -1,157 +1,157 @@
 {
-    "$schema": "https://vega.github.io/schema/vega/v5.json",
-    "description": "A radar chart example, showing multiple dimensions in a radial layout.",
-    "width": 400,
-    "height": 400,
-    "padding": 40,
-    "autosize": {"type": "none", "contains": "padding"},
-  
-    "signals": [
-      {"name": "radius", "update": "width / 2"}
-    ],
-  
-    "data": [
-      {
-        "name": "player_stats",
-        "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Data_Visualisation_2/data/player_stats.csv",
-        "format": {
-          "type": "csv"
-        }
-      },
-      {
-        "name": "keys",
-        "source": "player_stats",
-        "transform": [
-          {
-            "type": "aggregate",
-            "groupby": ["KEY"]
-          }
-        ]
-      }
-    ],
-    "scales": [
-      {
-        "name": "angular",
-        "type": "point",
-        "range": {"signal": "[-PI, PI]"},
-        "padding": 0.5,
-        "domain": {"data": "player_stats", "field": "KEY"}
-      },
-      {
-        "name": "radial",
-        "type": "linear",
-        "range": {"signal": "[0, radius]"},
-        "zero": true,
-        "nice": false,
-        "domain": {"data": "player_stats", "field": "VALUE"},
-        "domainMin": 0
-      },
-      {
-        "name": "color",
-        "type": "ordinal",
-        "domain": {"data": "player_stats", "field": "CATEGORY"},
-        "range": {"scheme": "category10"}
-      }
-    ],
-  
-    "encode": {
-      "enter": {
-        "x": {"signal": "radius"},
-        "y": {"signal": "radius"}
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "A radar chart example, showing multiple dimensions in a radial layout.",
+  "width": 400,
+  "height": 400,
+  "padding": 40,
+  "autosize": {"type": "none", "contains": "padding"},
+
+  "signals": [
+    {"name": "radius", "update": "width / 2"}
+  ],
+
+  "data": [
+    {
+      "name": "player_stats",
+      "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Data_Visualisation_2/data/player_stats.csv",
+      "format": {
+        "type": "csv"
       }
     },
-  
-    "marks": [
-      {
-        "type": "group",
-        "name": "categories",
-        "zindex": 1,
-        "from": {
-          "facet": {"data": "player_stats", "name": "facet", "groupby": ["CATEGORY"]}
-        },
-        "marks": [
-          {
-            "type": "line",
-            "name": "category-line",
-            "from": {"data": "facet"},
-            "encode": {
-              "enter": {
-                "interpolate": {"value": "linear-closed"},
-                "x": {"signal": "scale('radial', datum['VALUE']) * cos(scale('angular', datum['KEY']))"},
-                "y": {"signal": "scale('radial', datum['VALUE']) * sin(scale('angular', datum['KEY']))"},
-                "stroke": {"scale": "color", "field": "CATEGORY"},
-                "strokeWidth": {"value": 1},
-                "fill": {"scale": "color", "field": "CATEGORY"},
-                "fillOpacity": {"value": 0.1}
-              }
+    {
+      "name": "stats",
+      "source": "player_stats",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["STAT"]
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "angular",
+      "type": "point",
+      "range": {"signal": "[-PI, PI]"},
+      "padding": 0.5,
+      "domain": {"data": "player_stats", "field": "STAT"}
+    },
+    {
+      "name": "radial",
+      "type": "linear",
+      "range": {"signal": "[0, radius]"},
+      "zero": true,
+      "nice": false,
+      "domain": {"data": "player_stats", "field": "VALUE"},
+      "domainMin": 0
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {"data": "player_stats", "field": "PLAYER_NAME"},
+      "range": {"scheme": "category10"}
+    }
+  ],
+
+  "encode": {
+    "enter": {
+      "x": {"signal": "radius"},
+      "y": {"signal": "radius"}
+    }
+  },
+
+  "marks": [
+    {
+      "type": "group",
+      "name": "categories",
+      "zindex": 1,
+      "from": {
+        "facet": {"data": "player_stats", "name": "facet", "groupby": ["PLAYER_NAME"]}
+      },
+      "marks": [
+        {
+          "type": "line",
+          "name": "category-line",
+          "from": {"data": "facet"},
+          "encode": {
+            "enter": {
+              "interpolate": {"value": "linear-closed"},
+              "x": {"signal": "scale('radial', datum['VALUE']) * cos(scale('angular', datum['STAT']))"},
+              "y": {"signal": "scale('radial', datum['VALUE']) * sin(scale('angular', datum['STAT']))"},
+              "stroke": {"scale": "color", "field": "PLAYER_NAME"},
+              "strokeWidth": {"value": 1},
+              "fill": {"scale": "color", "field": "PLAYER_NAME"},
+              "fillOpacity": {"value": 0.1}
             }
           }
-        ]
-      },
-      {
-        "type": "rule",
-        "name": "radial-grid",
-        "from": {"data": "keys"},
-        "zindex": 0,
-        "encode": {
-          "enter": {
-            "x": {"value": 0},
-            "y": {"value": 0},
-            "x2": {"signal": "radius * cos(scale('angular', datum['KEY']))"},
-            "y2": {"signal": "radius * sin(scale('angular', datum['KEY']))"},
-            "stroke": {"value": "lightgray"},
-            "strokeWidth": {"value": 1}
-          }
         }
-      },
-      {
-        "type": "text",
-        "name": "key-label",
-        "from": {"data": "keys"},
-        "zindex": 1,
-        "encode": {
-          "enter": {
-            "x": {"signal": "(radius + 5) * cos(scale('angular', datum['KEY']))"},
-            "y": {"signal": "(radius + 5) * sin(scale('angular', datum['KEY']))"},
-            "text": {"field": "KEY"},
-            "align": [
-              {
-                "test": "abs(scale('angular', datum['KEY'])) > PI / 2",
-                "value": "right"
-              },
-              {
-                "value": "left"
-              }
-            ],
-            "baseline": [
-              {
-                "test": "scale('angular', datum['KEY']) > 0", "value": "top"
-              },
-              {
-                "test": "scale('angular', datum['KEY']) == 0", "value": "middle"
-              },
-              {
-                "value": "bottom"
-              }
-            ],
-            "fill": {"value": "black"},
-            "fontWeight": {"value": "bold"}
-          }
-        }
-      },
-      {
-        "type": "line",
-        "name": "outer-line",
-        "from": {"data": "radial-grid"},
-        "encode": {
-          "enter": {
-            "interpolate": {"value": "linear-closed"},
-            "x": {"field": "x2"},
-            "y": {"field": "y2"},
-            "stroke": {"value": "lightgray"},
-            "strokeWidth": {"value": 1}
-          }
+      ]
+    },
+    {
+      "type": "rule",
+      "name": "radial-grid",
+      "from": {"data": "stats"},
+      "zindex": 0,
+      "encode": {
+        "enter": {
+          "x": {"value": 0},
+          "y": {"value": 0},
+          "x2": {"signal": "radius * cos(scale('angular', datum['STAT']))"},
+          "y2": {"signal": "radius * sin(scale('angular', datum['STAT']))"},
+          "stroke": {"value": "lightgray"},
+          "strokeWidth": {"value": 1}
         }
       }
-    ]
-  }
+    },
+    {
+      "type": "text",
+      "name": "key-label",
+      "from": {"data": "stats"},
+      "zindex": 1,
+      "encode": {
+        "enter": {
+          "x": {"signal": "(radius + 5) * cos(scale('angular', datum['STAT']))"},
+          "y": {"signal": "(radius + 5) * sin(scale('angular', datum['STAT']))"},
+          "text": {"field": "STAT"},
+          "align": [
+            {
+              "test": "abs(scale('angular', datum['STAT'])) > PI / 2",
+              "value": "right"
+            },
+            {
+              "value": "left"
+            }
+          ],
+          "baseline": [
+            {
+              "test": "scale('angular', datum['STAT']) > 0", "value": "top"
+            },
+            {
+              "test": "scale('angular', datum['STAT']) == 0", "value": "middle"
+            },
+            {
+              "value": "bottom"
+            }
+          ],
+          "fill": {"value": "black"},
+          "fontWeight": {"value": "bold"}
+        }
+      }
+    },
+    {
+      "type": "line",
+      "name": "outer-line",
+      "from": {"data": "radial-grid"},
+      "encode": {
+        "enter": {
+          "interpolate": {"value": "linear-closed"},
+          "x": {"field": "x2"},
+          "y": {"field": "y2"},
+          "stroke": {"value": "lightgray"},
+          "strokeWidth": {"value": 1}
+        }
+      }
+    }
+  ]
+}
