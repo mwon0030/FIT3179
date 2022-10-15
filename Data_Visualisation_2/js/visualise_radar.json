@@ -1,13 +1,16 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "A radar chart example, showing multiple dimensions in a radial layout.",
-  "width": 400,
-  "height": 400,
-  "padding": 40,
+  "width": 600,
+  "height": 600,
+  "padding": 150,
   "autosize": {"type": "none", "contains": "padding"},
 
   "signals": [
-    {"name": "radius", "update": "width / 2"}
+    {
+      "name": "radius", 
+      "update": "width / 2"
+      }
   ],
 
   "data": [
@@ -16,7 +19,13 @@
       "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Data_Visualisation_2/data/player_stats.csv",
       "format": {
         "type": "csv"
-      }
+      },
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum['PLAYER_NAME'] == 'LeBron James' || datum['PLAYER_NAME'] == 'Russell Westbrook' || datum['PLAYER_NAME'] == 'Rudy Gobert'"
+        }
+      ]
     },
     {
       "name": "stats",
@@ -150,6 +159,29 @@
           "y": {"field": "y2"},
           "stroke": {"value": "lightgray"},
           "strokeWidth": {"value": 1}
+        }
+      }
+    }
+  ],
+  "legends": [
+    {
+      "stroke": "color",
+      "fill": "color",
+      "title": "Player Name",
+      "orient":"top-right",
+      "encode": {
+        "symbols": {
+          "name": "legendSymbol",
+          "interactive": true,
+          "update": {
+            "fill": {"value": "transparent"},
+            "strokeWidth": {"value": 2},
+            "size": {"value": 64}
+          }
+        },
+        "labels": {
+          "name": "legendLabel",
+          "interactive": true
         }
       }
     }
