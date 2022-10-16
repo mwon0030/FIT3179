@@ -4,7 +4,7 @@
       "text": "Team rating throughout the first 30 games of the 2015-16 season",
       "fontSize": 14
     },
-    "height": "500",
+    "height": "530",
     "width": "500",
     "data": {
         "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Data_Visualisation_2/data/boxscore.csv"

@@ -1,41 +1,94 @@
+.columns {
+  display: grid;
+  grid-template-columns: 60% 40%;	
+}
+
 #container1 {
     position: relative;
-    height: 650px;
+    height: 700px;
+    top: 70px;
+    left: 100px;
     display: grid;
-    place-items: center;
+    place-items: left;
   }
   
   #shot_chart {
-    top: 0%;
-  
     display: grid;
     place-items: center;
   }
 
 #container2 {
     position: relative;
-    height: 600px;
+    height: 700px;
+    top: 170px;
+    left: 65px;
     display: grid;
-    place-items: center;
+    place-items: left;
   }
   
   #squiggle {
-    top: 0%;
-  
     display: grid;
     place-items: center;
   }
 
 #container3 {
     position: relative;
-  
+    top: 170px;
+    left: 50px;
+    height: 700px;
     display: grid;
-    place-items: center;
+    place-items: left;
   }
   
   #radar {
-    top: 0%;
-  
+    top: -80px;
+    right: 220px;
     display: grid;
     place-items: center;
   }
+
+#container4 {
+  position: relative;
+  display: grid;
+  place-items: left;
+  top: 270px;
+  left: 70px;
+  height: 700px;
+}
+
+  #heatmap {
+    display: grid;
+    place-items: center;
+  }
+
+#container5 {
+  position: relative;
+  display: grid;
+  place-items: left;
+  top: 70px;
+  height: 700px;
+}
+
+#container6 {
+  position: relative;
+  display: grid;
+  place-items: left;
+  height: 700px;
+  top: 170px;
+}
+
+#container7 {
+  position: relative;
+  display: grid;
+  place-items: left;
+  height: 700px;
+  top: 370px;
+}
+
+#container8 {
+  position: relative;
+  display: grid;
+  place-items: left;
+  height: 700px;
+  top: 270px;
+}

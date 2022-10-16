@@ -15,8 +15,8 @@
       "filter": "datum['HEIGHT_CM'] >= 150 && datum['WEIGHT_KG'] >= 50"
     }],
     "mark": "rect",
-    "width": 300,
-    "height": 200,
+    "width": 460,
+    "height": 520,
     "encoding": {
       "x": {
         "bin": {"maxbins": 25},

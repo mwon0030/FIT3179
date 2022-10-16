@@ -8,11 +8,10 @@
       }
     ]
   },
-  "width": 650,
-  "height": 650,
-  "padding": 170,
+  "width": 800,
+  "height": 800,
+  "padding": 200,
   "autosize": {"type": "none", "contains": "padding"},
-
   "signals": [
     {
       "name": "radius", 
@@ -227,5 +226,8 @@
         }
       }
     }
-  ]
+  ],
+  "config": {
+    "background": "white"
+  }
 }

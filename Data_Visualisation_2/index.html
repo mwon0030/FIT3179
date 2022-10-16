@@ -1,44 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-<link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
-</head>
-<body>
-<div id = "container1">
-<div id = "shot_chart">
-<script type = "text/javascript">
-    var vg_1 = "js/visualise_shot_chart.json";
-    vegaEmbed("#shot_chart", vg_1).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-</script>
-</div>
-</div>
-<div id = "container2">
-<div id = "squiggle">
-<script type = "text/javascript">
-    var vg_2 = "js/visualise_squiggle.json";
-    vegaEmbed("#squiggle", vg_2).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-</script>
-</div>
-</div>
-<div id = "container3">
-<div id = "radar">
-<script type = "text/javascript">
-    var vg_3 = "js/visualise_radar.json";
-    vegaEmbed("#radar", vg_3).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
-</script>
-</div>
-</div>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+		<h1 style = "text-align: center;">NBA Data Visualisation</h1>
+	</head>
+	<body>
+		<div class = "columns">
+			<div class = "column1">
+				<div id = "container1">
+					<div id = "shot_chart">
+						<script type = "text/javascript">
+                            var vg_1 = "js/visualise_shot_chart.json";
+                            vegaEmbed("#shot_chart", vg_1).then(function(result) {
+                            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                            }).catch(console.error);
+                        </script>
+					</div>
+				</div>
+				<div id = "container2">
+					<div id = "squiggle">
+						<script type = "text/javascript">
+                            var vg_2 = "js/visualise_squiggle.json";
+                            vegaEmbed("#squiggle", vg_2).then(function(result) {
+                            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                            }).catch(console.error);
+                        </script>
+					</div>
+				</div>
+				<div id = "container3">
+					<div id = "radar">
+						<script type = "text/javascript">
+                            var vg_3 = "js/visualise_radar.json";
+                            vegaEmbed("#radar", vg_3).then(function(result) {
+                            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                            }).catch(console.error);
+                        </script>
+					</div>
+				</div>
+				<div id = "container4">
+					<div id = "heatmap">
+						<script type = "text/javascript">
+                            var vg_3 = "js/visualise_heatmap.json";
+                            vegaEmbed("#heatmap", vg_3).then(function(result) {
+                            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                            }).catch(console.error);
+                        </script>
+					</div>
+				</div>
+			</div>
+			<div class = "column2">
+				<div id = "container5">
+					<p> testing1 </p>
+				</div>
+                <div id = "container6">
+					<p> testing2 </p>
+				</div>
+                <div id = "container7">
+					<p> testing3 </p>
+				</div>
+                <div id = "container8">
+					<p> testing4 </p>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
