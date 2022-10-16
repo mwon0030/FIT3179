@@ -52,7 +52,7 @@
       "range": {"signal": "[0, radius]"},
       "zero": true,
       "nice": false,
-      "domain": {"data": "player_stats", "field": "VALUE"},
+      "domain": {"data": "player_stats", "field": "VALUE_NORM"},
       "domainMin": 0
     },
     {
@@ -86,12 +86,15 @@
           "encode": {
             "enter": {
               "interpolate": {"value": "linear-closed"},
-              "x": {"signal": "scale('radial', datum['VALUE']) * cos(scale('angular', datum['STAT']))"},
-              "y": {"signal": "scale('radial', datum['VALUE']) * sin(scale('angular', datum['STAT']))"},
+              "x": {"signal": "scale('radial', datum['VALUE_NORM']) * cos(scale('angular', datum['STAT']))"},
+              "y": {"signal": "scale('radial', datum['VALUE_NORM']) * sin(scale('angular', datum['STAT']))"},
               "stroke": {"scale": "color", "field": "PLAYER_NAME"},
               "strokeWidth": {"value": 1},
               "fill": {"scale": "color", "field": "PLAYER_NAME"},
-              "fillOpacity": {"value": 0.1}
+              "fillOpacity": {"value": 0.1},
+              "tooltip": {
+                "signal": "{'Title1': datum.VALUE_TRUE}"
+              }
             }
           }
         }

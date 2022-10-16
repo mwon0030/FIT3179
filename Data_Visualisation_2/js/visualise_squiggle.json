@@ -8,7 +8,7 @@
     },
     "transform": [
         {
-            "filter": "datum['TEAM_NAME'] == 'Rockets' || datum['TEAM_NAME'] == 'Warriors' || datum['TEAM_NAME'] == 'Cavaliers' || datum['TEAM_NAME'] == 'Spurs' || datum['TEAM_NAME'] == 'Clippers' || datum['TEAM_NAME'] == 'Thunder'",
+            "filter": "datum['TEAM_NAME'] == 'Rockets' || datum['TEAM_NAME'] == 'Warriors' || datum['TEAM_NAME'] == 'Cavaliers'",
             "as": "team_filter"
         }
     ],
@@ -34,6 +34,9 @@
                     "scale": {
                         "domain": [85,125]
                     }
+                },
+                "order": {
+                    "field": "ORDER"
                 }
     },
     "layer": [
