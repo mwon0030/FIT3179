@@ -1,9 +1,16 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "A radar chart example, showing multiple dimensions in a radial layout.",
-  "width": 600,
-  "height": 600,
-  "padding": 150,
+  "title": {
+    "text": "Comparing key stats of two NBA players during the 2015-16 season",
+    "fontSize": [
+      {
+        "value": 14
+      }
+    ]
+  },
+  "width": 650,
+  "height": 650,
+  "padding": 170,
   "autosize": {"type": "none", "contains": "padding"},
 
   "signals": [
@@ -23,7 +30,7 @@
       "transform": [
         {
           "type": "filter",
-          "expr": "datum['PLAYER_NAME'] == 'LeBron James' || datum['PLAYER_NAME'] == 'Russell Westbrook' || datum['PLAYER_NAME'] == 'Rudy Gobert'"
+          "expr": "datum['PLAYER_NAME'] == 'Russell Westbrook' || datum['PLAYER_NAME'] == 'Rudy Gobert'"
         }
       ]
     },
@@ -110,8 +117,13 @@
             },
             "update": {
               "fontSize": [{
-                "value": 7
-              }]
+                "value": 10
+              }],
+              "fontStyle": [
+                {
+                  "value": "italic"
+                }
+              ]
             }
           }
         }
@@ -164,7 +176,17 @@
             }
           ],
           "fill": {"value": "black"},
-          "fontWeight": {"value": "bold"}
+          "fontWeight": {"value": "bold"},
+          "dx": [
+            {
+              "value": 5
+            }
+          ],
+          "dy": [
+            {
+              "value": 1
+            }
+          ]
         }
       }
     },

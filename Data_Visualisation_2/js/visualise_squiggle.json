@@ -1,6 +1,9 @@
 {
     "schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Team rating throughout the first 30 games of the 2015-16 season",
+    "title": {
+      "text": "Team rating throughout the first 30 games of the 2015-16 season",
+      "fontSize": 14
+    },
     "height": "500",
     "width": "500",
     "data": {
@@ -35,7 +38,7 @@
                     "Golden State Warriors",
                     "Cleveland Cavaliers"
                 ],
-                "name": "Select Team:"
+                "name": "Select Team: "
             }
         }
     ],
