@@ -1,21 +1,42 @@
 {
     "schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Team offensive and defense rating change throughout the season",
+    "title": "Team rating throughout the first 30 games of the 2015-16 season",
     "height": "500",
     "width": "500",
     "data": {
-        "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Week_10_Homework/data/boxscore.csv"
+        "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Data_Visualisation_2/data/boxscore.csv"
     },
     "transform": [
         {
             "filter": "datum['TEAM_NAME'] == 'Rockets' || datum['TEAM_NAME'] == 'Warriors' || datum['TEAM_NAME'] == 'Cavaliers'",
             "as": "team_filter"
+        },
+        {
+            "filter": "datum['TEAM_NAME'] == select_team || select_team == null"
+        },
+        {
+          "filter": "datum['ORDER'] <= 30"
         }
     ],
     "params": [
         {
             "name": "select_team",
-            "select": "point"
+            "bind": {
+                "input": "select",
+                "options": [
+                    null,
+                    "Rockets",
+                    "Warriors",
+                    "Cavaliers"
+                ],
+                "labels": [
+                    "Show All",
+                    "Houston Rockets",
+                    "Golden State Warriors",
+                    "Cleveland Cavaliers"
+                ],
+                "name": "Select Team:"
+            }
         }
     ],
     "encoding": {
@@ -36,22 +57,95 @@
                     }
                 },
                 "order": {
-                    "field": "ORDER"
+                    "value": null
                 }
     },
     "layer": [
         {
             "mark": {
-                "type": "line"
+                "type": "line",
+                "point": true
             },
             "encoding": {
                 "color": {
+                    "field": "TEAM_NAME",
+                    "title": "Team Name",
+                    "scale": {
+                        "domain": ["Cavaliers", "Rockets", "Warriors"],
+                        "range": ["#f1c232", "#f44336", "#2986cc"]
+                    }
+                },
+                "opacity": {
                     "condition": {
-                        "param": "select_team",
-                        "field": "TEAM_NAME"
+                        "test": "datum['TEAM_NAME'] == select_team || select_team == null",
+                        "value": 1
                     },
-                    "value": "#eeeeee"
-                }
+                    "value": 0.2
+                },
+                "tooltip": [
+                    {
+                        "field": "ORDER",
+                        "title": "Game"
+                    }
+                ]
+            }
+        },
+        {
+            "mark": {
+              "type": "text",
+              "align": "left",
+              "baseline": "bottom",
+              "dx": -12,
+              "dy": -5,
+              "fontSize": 11,
+              "fontStyle": "italic"
+            },
+            "encoding": {
+                "text": {
+                    "value": "Game 1"
+                },
+                "color": {
+                    "value": "black"
+                },
+                "opacity": {
+                "condition": {
+                  "test": "datum['START_POS_FLAG'] == 1",
+                  "value": 1
+                },
+                "value": 0
+              }
+            }
+        },
+        {
+            "mark": {
+              "type": "text",
+              "align": "left",
+              "baseline": "bottom",
+              "dx": -12,
+              "dy": -5,
+              "fontSize": 11,
+              "fontStyle": "italic"
+            },
+            "encoding": {
+                "text": {
+                    "value": "Game 30"
+                },
+                "color": {
+                    "value": "black"
+                },
+                "opacity": {
+                "condition": {
+                  "test": "datum['ORDER'] == 30",
+                  "value": 1
+                },
+                "value": 0
+              },
+                "tooltip": [
+                    {
+                        "field": "ORDER",
+                        "title": "Game"
+                    }
+                ]
             }
         }
     ]
