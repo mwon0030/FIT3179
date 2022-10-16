@@ -91,10 +91,27 @@
               "stroke": {"scale": "color", "field": "PLAYER_NAME"},
               "strokeWidth": {"value": 1},
               "fill": {"scale": "color", "field": "PLAYER_NAME"},
-              "fillOpacity": {"value": 0.1},
-              "tooltip": {
-                "signal": "{'Title1': datum.VALUE_TRUE}"
-              }
+              "fillOpacity": {"value": 0.1}
+            }
+          }
+        },
+        {
+            "type": "text",
+          "name": "value-text",
+          "from": {"data": "category-line"},
+          "encode": {
+            "enter": {
+              "x": {"signal": "datum.x"},
+              "y": {"signal": "datum.y"},
+              "text": {"signal": "datum.datum['VALUE_TRUE']"},
+              "align": {"value": "center"},
+              "baseline": {"value": "middle"},
+              "fill": {"value": "black"}
+            },
+            "update": {
+              "fontSize": [{
+                "value": 7
+              }]
             }
           }
         }
