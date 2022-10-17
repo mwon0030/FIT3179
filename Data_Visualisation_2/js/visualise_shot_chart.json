@@ -2,7 +2,14 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "NBA Shot Chart 2015-16 Regular Season",
-    "fontSize": 14
+    "fontSize": 20
+  },
+  "config": {
+    "font": "myFont",
+    "legend": {
+      "titleFontSize": 14,
+      "labelFontSize": 14
+    }
   },
   "height": 560,
   "width": 500,
@@ -35,7 +42,7 @@
           "Rudy Gobert",
           "Danny Green"
         ],
-        "name": "Select player: "
+        "name": "Select Player "
       }
     }
   ],
@@ -154,7 +161,7 @@
             "baseline": "bottom",
             "dx": -12,
             "dy": -5,
-            "fontSize": 11,
+            "fontSize": 12,
             "fontStyle": "italic"
           },
           "encoding": {
@@ -174,7 +181,10 @@
             "tooltip": [
               {
                 "field": "ACTION_TYPE",
-                "title": "Action"
+                "title": "Action",
+                "format": {
+                  "font": "myFont"
+                }
               },
               {
                 "field": "SHOT_TYPE",

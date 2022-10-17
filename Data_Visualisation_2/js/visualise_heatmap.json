@@ -1,51 +1,69 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {
-      "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Data_Visualisation_2/data/common_player_info.csv",
-      "name": "player_data",
-      "format": {
-        "type": "csv"
-      }
-      },
-    "title": {
-      "text": "Distribution of Height and Weight of Active NBA Players",
-      "fontSize": 14
-    },
-    "transform": [{
-      "filter": "datum['HEIGHT_CM'] >= 150 && datum['WEIGHT_KG'] >= 50"
-    }],
-    "mark": "rect",
-    "width": 460,
-    "height": 520,
-    "encoding": {
-      "x": {
-        "bin": {"maxbins": 25},
-        "field": "HEIGHT_CM",
-        "type": "quantitative",
-        "title": "Height (CM)"
-      },
-      "y": {
-        "bin": {"maxbins": 10},
-        "field": "WEIGHT_KG",
-        "type": "quantitative",
-        "title": "Weight (KG)"
-      },
-      "color": {
-        "aggregate": "count",
-        "type": "quantitative",
-        "title": "Number of Players"
-      },
-      "tooltip": [
-        {
-          "aggregate": "count",
-          "title": "Number of Players"
-        }
-      ]
-    },
-    "config": {
-      "view": {
-        "stroke": "transparent"
-      }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Data_Visualisation_2/data/common_player_info.csv",
+    "name": "player_data",
+    "format": {
+      "type": "csv"
     }
+  },
+  "title": {
+    "text": "Distribution of Height and Weight of Active NBA Players",
+    "fontSize": 20
+  },
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    },
+    "font": "myFont",
+    "legend": {
+      "titleFontSize": 14,
+      "labelFontSize": 14
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum['HEIGHT_CM'] >= 150 && datum['WEIGHT_KG'] >= 50"
+    }
+  ],
+  "mark": "rect",
+  "width": 460,
+  "height": 520,
+  "encoding": {
+    "x": {
+      "bin": {
+        "maxbins": 25
+      },
+      "field": "HEIGHT_CM",
+      "type": "quantitative",
+      "title": "Height (CM)",
+      "axis": {
+        "titleFontSize": 14,
+        "labelFontSize": 14
+      }
+    },
+    "y": {
+      "bin": {
+        "maxbins": 10
+      },
+      "field": "WEIGHT_KG",
+      "type": "quantitative",
+      "title": "Weight (KG)",
+      "axis": {
+        "titleFontSize": 14,
+        "labelFontSize": 14
+      }
+    },
+    "color": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "title": "Number of Players"
+    },
+    "tooltip": [
+      {
+        "aggregate": "count",
+        "title": "Number of Players"
+      }
+    ]
   }
-  
+}

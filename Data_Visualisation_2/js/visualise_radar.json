@@ -1,24 +1,26 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "title": {
-    "text": "Comparing key stats of two NBA players during the 2015-16 season",
-    "fontSize": [
-      {
-        "value": 14
-      }
-    ]
+  "title": "Comparing key stats of two NBA players during the 2015-16 season",
+  "width": 820,
+  "height": 820,
+  "padding": 220,
+  "config": {
+    "background": "white",
+    "title": {
+      "fontSize": 20,
+      "font": "myFont"
+    }
   },
-  "width": 800,
-  "height": 800,
-  "padding": 200,
-  "autosize": {"type": "none", "contains": "padding"},
+  "autosize": {
+    "type": "none",
+    "contains": "padding"
+  },
   "signals": [
     {
-      "name": "radius", 
+      "name": "radius",
       "update": "width / 2"
-      }
+    }
   ],
-
   "data": [
     {
       "name": "player_stats",
@@ -39,7 +41,9 @@
       "transform": [
         {
           "type": "aggregate",
-          "groupby": ["STAT"]
+          "groupby": [
+            "STAT"
+          ]
         }
       ]
     }
@@ -48,76 +52,138 @@
     {
       "name": "angular",
       "type": "point",
-      "range": {"signal": "[-PI, PI]"},
+      "range": {
+        "signal": "[-PI, PI]"
+      },
       "padding": 0.5,
-      "domain": {"data": "player_stats", "field": "STAT"}
+      "domain": {
+        "data": "player_stats",
+        "field": "STAT"
+      }
     },
     {
       "name": "radial",
       "type": "linear",
-      "range": {"signal": "[0, radius]"},
+      "range": {
+        "signal": "[0, radius]"
+      },
       "zero": true,
       "nice": false,
-      "domain": {"data": "player_stats", "field": "VALUE_NORM"},
+      "domain": {
+        "data": "player_stats",
+        "field": "VALUE_NORM"
+      },
       "domainMin": 0
     },
     {
       "name": "color",
       "type": "ordinal",
-      "domain": {"data": "player_stats", "field": "PLAYER_NAME"},
-      "range": {"scheme": "category10"}
+      "domain": {
+        "data": "player_stats",
+        "field": "PLAYER_NAME"
+      },
+      "range": [
+          "#93c47d", "#ff8200"
+      ]
     }
   ],
-
   "encode": {
     "enter": {
-      "x": {"signal": "radius"},
-      "y": {"signal": "radius"}
+      "x": {
+        "signal": "radius"
+      },
+      "y": {
+        "signal": "radius"
+      }
     }
   },
-
   "marks": [
     {
       "type": "group",
       "name": "categories",
       "zindex": 1,
       "from": {
-        "facet": {"data": "player_stats", "name": "facet", "groupby": ["PLAYER_NAME"]}
+        "facet": {
+          "data": "player_stats",
+          "name": "facet",
+          "groupby": [
+            "PLAYER_NAME"
+          ]
+        }
       },
       "marks": [
         {
           "type": "line",
           "name": "category-line",
-          "from": {"data": "facet"},
+          "from": {
+            "data": "facet"
+          },
           "encode": {
             "enter": {
-              "interpolate": {"value": "linear-closed"},
-              "x": {"signal": "scale('radial', datum['VALUE_NORM']) * cos(scale('angular', datum['STAT']))"},
-              "y": {"signal": "scale('radial', datum['VALUE_NORM']) * sin(scale('angular', datum['STAT']))"},
-              "stroke": {"scale": "color", "field": "PLAYER_NAME"},
-              "strokeWidth": {"value": 1},
-              "fill": {"scale": "color", "field": "PLAYER_NAME"},
-              "fillOpacity": {"value": 0.1}
+              "interpolate": {
+                "value": "linear-closed"
+              },
+              "x": {
+                "signal": "scale('radial', datum['VALUE_NORM']) * cos(scale('angular', datum['STAT']))"
+              },
+              "y": {
+                "signal": "scale('radial', datum['VALUE_NORM']) * sin(scale('angular', datum['STAT']))"
+              },
+              "stroke": {
+                "scale": "color",
+                "field": "PLAYER_NAME"
+              },
+              "strokeWidth": {
+                "value": 1
+              },
+              "fill": {
+                "scale": "color",
+                "field": "PLAYER_NAME"
+              },
+              "fillOpacity": {
+                "value": 0.1
+              }
             }
           }
         },
         {
-            "type": "text",
+          "type": "text",
           "name": "value-text",
-          "from": {"data": "category-line"},
+          "from": {
+            "data": "category-line"
+          },
           "encode": {
             "enter": {
-              "x": {"signal": "datum.x"},
-              "y": {"signal": "datum.y"},
-              "text": {"signal": "datum.datum['VALUE_TRUE']"},
-              "align": {"value": "center"},
-              "baseline": {"value": "middle"},
-              "fill": {"value": "black"}
+              "x": {
+                "signal": "datum.x"
+              },
+              "y": {
+                "signal": "datum.y"
+              },
+              "text": {
+                "signal": "datum.datum['VALUE_TRUE']"
+              },
+              "align": {
+                "value": "center"
+              },
+              "baseline": {
+                "value": "middle"
+              },
+              "fill": {
+                "value": "black"
+              }
             },
             "update": {
-              "fontSize": [{
-                "value": 10
-              }],
+              "fontSize": [
+                {
+                  "value": 12
+                }
+              ],
+              "font": [
+                {
+                  "value": "myFont"
+                }
+              ],
               "fontStyle": [
                 {
                   "value": "italic"
@@ -131,29 +197,51 @@
     {
       "type": "rule",
       "name": "radial-grid",
-      "from": {"data": "stats"},
+      "from": {
+        "data": "stats"
+      },
       "zindex": 0,
       "encode": {
         "enter": {
-          "x": {"value": 0},
-          "y": {"value": 0},
-          "x2": {"signal": "radius * cos(scale('angular', datum['STAT']))"},
-          "y2": {"signal": "radius * sin(scale('angular', datum['STAT']))"},
-          "stroke": {"value": "lightgray"},
-          "strokeWidth": {"value": 1}
+          "x": {
+            "value": 0
+          },
+          "y": {
+            "value": 0
+          },
+          "x2": {
+            "signal": "radius * cos(scale('angular', datum['STAT']))"
+          },
+          "y2": {
+            "signal": "radius * sin(scale('angular', datum['STAT']))"
+          },
+          "stroke": {
+            "value": "lightgray"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
         }
       }
     },
     {
       "type": "text",
       "name": "key-label",
-      "from": {"data": "stats"},
+      "from": {
+        "data": "stats"
+      },
       "zindex": 1,
       "encode": {
         "enter": {
-          "x": {"signal": "(radius + 5) * cos(scale('angular', datum['STAT']))"},
-          "y": {"signal": "(radius + 5) * sin(scale('angular', datum['STAT']))"},
-          "text": {"field": "STAT"},
+          "x": {
+            "signal": "(radius + 5) * cos(scale('angular', datum['STAT']))"
+          },
+          "y": {
+            "signal": "(radius + 5) * sin(scale('angular', datum['STAT']))"
+          },
+          "text": {
+            "field": "STAT"
+          },
           "align": [
             {
               "test": "abs(scale('angular', datum['STAT'])) > PI / 2",
@@ -165,17 +253,29 @@
           ],
           "baseline": [
             {
-              "test": "scale('angular', datum['STAT']) > 0", "value": "top"
+              "test": "scale('angular', datum['STAT']) > 0",
+              "value": "top"
             },
             {
-              "test": "scale('angular', datum['STAT']) == 0", "value": "middle"
+              "test": "scale('angular', datum['STAT']) == 0",
+              "value": "middle"
             },
             {
               "value": "bottom"
             }
           ],
-          "fill": {"value": "black"},
-          "fontWeight": {"value": "bold"},
+          "fill": {
+            "value": "black"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "font": {
+            "value": "myFont"
+          },
+          "fontSize": {
+            "value": 14
+          },
           "dx": [
             {
               "value": 5
@@ -192,14 +292,26 @@
     {
       "type": "line",
       "name": "outer-line",
-      "from": {"data": "radial-grid"},
+      "from": {
+        "data": "radial-grid"
+      },
       "encode": {
         "enter": {
-          "interpolate": {"value": "linear-closed"},
-          "x": {"field": "x2"},
-          "y": {"field": "y2"},
-          "stroke": {"value": "lightgray"},
-          "strokeWidth": {"value": 1}
+          "interpolate": {
+            "value": "linear-closed"
+          },
+          "x": {
+            "field": "x2"
+          },
+          "y": {
+            "field": "y2"
+          },
+          "stroke": {
+            "value": "lightgray"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
         }
       }
     }
@@ -207,27 +319,44 @@
   "legends": [
     {
       "stroke": "color",
-      "fill": "color",
+      "orient": "top-right",
       "title": "Player Name",
-      "orient":"top-right",
       "encode": {
         "symbols": {
           "name": "legendSymbol",
-          "interactive": true,
           "update": {
-            "fill": {"value": "transparent"},
-            "strokeWidth": {"value": 2},
-            "size": {"value": 64}
+            "fill": {
+              "value": "transparent"
+            },
+            "strokeWidth": {
+              "value": 2
+            },
+            "size": {
+              "value": 64
+            }
           }
         },
         "labels": {
-          "name": "legendLabel",
-          "interactive": true
+          "update": {
+            "font": {
+              "value": "myFont"
+            },
+            "fontSize": {
+              "value": 14
+            }
+          }
+        },
+        "title": {
+          "update": {
+            "font": {
+              "value": "myFont"
+            },
+            "fontSize": {
+              "value": 14
+            }
+          }
         }
       }
     }
-  ],
-  "config": {
-    "background": "white"
-  }
+  ]
 }

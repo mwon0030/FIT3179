@@ -1,13 +1,45 @@
+@font-face {
+  font-family: myFont;
+  src: url(fonts/PublicSans-VariableFont_wght.ttf);
+}
+
+p {
+  font-family: myFont;
+  font-size: 14px;
+}
+
+select {
+  font-family: myFont;
+  font-size: 14px;
+}
+
+#vg-tooltip-element {
+  font-family: myFont;
+}
+
 .columns {
   display: grid;
-  grid-template-columns: 60% 40%;	
+  grid-template-columns: 60% 40%;
+  width: 1200px;
+  margin: auto;
+}
+
+.vega-bind-name {
+  font-family: myFont;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#title {
+  font-family: myFont;
+  font-size: 34px;
 }
 
 #container1 {
     position: relative;
     height: 700px;
     top: 70px;
-    left: 100px;
+    left: 80px;
     display: grid;
     place-items: left;
   }
@@ -21,7 +53,7 @@
     position: relative;
     height: 700px;
     top: 170px;
-    left: 65px;
+    left: 45px;
     display: grid;
     place-items: left;
   }
@@ -34,17 +66,18 @@
 #container3 {
     position: relative;
     top: 170px;
-    left: 50px;
+    left: 60px;
     height: 700px;
     display: grid;
     place-items: left;
   }
   
   #radar {
-    top: -80px;
+    top: -70px;
     right: 220px;
     display: grid;
     place-items: center;
+    font-family: myFont;
   }
 
 #container4 {
@@ -52,7 +85,7 @@
   display: grid;
   place-items: left;
   top: 270px;
-  left: 70px;
+  left: 50px;
   height: 700px;
 }
 

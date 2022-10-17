@@ -1,155 +1,184 @@
 {
     "schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {
-      "text": "Team rating throughout the first 30 games of the 2015-16 season",
-      "fontSize": 14
+    "title": "Team rating throughout the first 30 games of the 2015-16 season",
+    "config": {
+      "font": "myFont",
+      "title": {
+        "fontSize": 20
+      },
+      "legend": {
+        "titleFontSize": 14,
+        "labelFontSize": 14
+      }
     },
     "height": "530",
     "width": "500",
     "data": {
-        "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Data_Visualisation_2/data/boxscore.csv"
+      "url": "https://raw.githubusercontent.com/mwon0030/FIT3179/main/Data_Visualisation_2/data/boxscore.csv"
     },
     "transform": [
-        {
-            "filter": "datum['TEAM_NAME'] == 'Rockets' || datum['TEAM_NAME'] == 'Warriors' || datum['TEAM_NAME'] == 'Cavaliers'",
-            "as": "team_filter"
-        },
-        {
-            "filter": "datum['TEAM_NAME'] == select_team || select_team == null"
-        },
-        {
-          "filter": "datum['ORDER'] <= 30"
-        }
+      {
+        "filter": "datum['TEAM_NAME'] == 'Rockets' || datum['TEAM_NAME'] == 'Warriors' || datum['TEAM_NAME'] == 'Cavaliers'",
+        "as": "team_filter"
+      },
+      {
+        "filter": "datum['TEAM_NAME'] == select_team || select_team == null"
+      },
+      {
+        "filter": "datum['ORDER'] <= 30"
+      }
     ],
     "params": [
-        {
-            "name": "select_team",
-            "bind": {
-                "input": "select",
-                "options": [
-                    null,
-                    "Rockets",
-                    "Warriors",
-                    "Cavaliers"
-                ],
-                "labels": [
-                    "Show All",
-                    "Houston Rockets",
-                    "Golden State Warriors",
-                    "Cleveland Cavaliers"
-                ],
-                "name": "Select Team: "
-            }
+      {
+        "name": "select_team",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "Rockets",
+            "Warriors",
+            "Cavaliers"
+          ],
+          "labels": [
+            "Show All",
+            "Houston Rockets",
+            "Golden State Warriors",
+            "Cleveland Cavaliers"
+          ],
+          "name": "Select Team "
         }
+      }
     ],
     "encoding": {
-                "x": {
-                    "field": "10GAME_AVG_DEF_RATING",
-                    "type": "quantitative",
-                    "title": "Defensive Rating",
-                    "scale": {
-                        "domain": [85,115]
-                    }
-                },
-                "y": {
-                    "field": "10GAME_AVG_OFF_RATING",
-                    "type": "quantitative",
-                    "title": "Offensive Rating",
-                    "scale": {
-                        "domain": [85,125]
-                    }
-                },
-                "order": {
-                    "value": null
-                }
+      "x": {
+        "field": "10GAME_AVG_DEF_RATING",
+        "type": "quantitative",
+        "title": "Defensive Rating",
+        "scale": {
+          "domain": [
+            85,
+            115
+          ]
+        },
+        "axis": {
+          "titleFontSize": 14,
+          "labelFontSize": 14
+        }
+      },
+      "y": {
+        "field": "10GAME_AVG_OFF_RATING",
+        "type": "quantitative",
+        "title": "Offensive Rating",
+        "scale": {
+          "domain": [
+            85,
+            125
+          ]
+        },
+        "axis": {
+          "titleFontSize": 14,
+          "labelFontSize": 14
+        }
+      },
+      "order": {
+        "value": null
+      }
     },
     "layer": [
-        {
-            "mark": {
-                "type": "line",
-                "point": true
-            },
-            "encoding": {
-                "color": {
-                    "field": "TEAM_NAME",
-                    "title": "Team Name",
-                    "scale": {
-                        "domain": ["Cavaliers", "Rockets", "Warriors"],
-                        "range": ["#f1c232", "#f44336", "#2986cc"]
-                    }
-                },
-                "opacity": {
-                    "condition": {
-                        "test": "datum['TEAM_NAME'] == select_team || select_team == null",
-                        "value": 1
-                    },
-                    "value": 0.2
-                },
-                "tooltip": [
-                    {
-                        "field": "ORDER",
-                        "title": "Game"
-                    }
-                ]
-            }
+      {
+        "mark": {
+          "type": "line",
+          "point": true
         },
-        {
-            "mark": {
-              "type": "text",
-              "align": "left",
-              "baseline": "bottom",
-              "dx": -12,
-              "dy": -5,
-              "fontSize": 11,
-              "fontStyle": "italic"
-            },
-            "encoding": {
-                "text": {
-                    "value": "Game 1"
-                },
-                "color": {
-                    "value": "black"
-                },
-                "opacity": {
-                "condition": {
-                  "test": "datum['START_POS_FLAG'] == 1",
-                  "value": 1
-                },
-                "value": 0
-              }
+        "encoding": {
+          "color": {
+            "field": "TEAM_NAME",
+            "title": "Team Name",
+            "scale": {
+              "domain": [
+                "Cavaliers",
+                "Rockets",
+                "Warriors"
+              ],
+              "range": [
+                "#f1c232",
+                "#f44336",
+                "#2986cc"
+              ]
             }
-        },
-        {
-            "mark": {
-              "type": "text",
-              "align": "left",
-              "baseline": "bottom",
-              "dx": -12,
-              "dy": -5,
-              "fontSize": 11,
-              "fontStyle": "italic"
+          },
+          "opacity": {
+            "condition": {
+              "test": "datum['TEAM_NAME'] == select_team || select_team == null",
+              "value": 1
             },
-            "encoding": {
-                "text": {
-                    "value": "Game 30"
-                },
-                "color": {
-                    "value": "black"
-                },
-                "opacity": {
-                "condition": {
-                  "test": "datum['ORDER'] == 30",
-                  "value": 1
-                },
-                "value": 0
-              },
-                "tooltip": [
-                    {
-                        "field": "ORDER",
-                        "title": "Game"
-                    }
-                ]
+            "value": 0.2
+          },
+          "tooltip": [
+            {
+              "field": "ORDER",
+              "title": "Game"
             }
+          ]
         }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "bottom",
+          "dx": -12,
+          "dy": -5,
+          "fontSize": 12,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {
+            "value": "Game 1"
+          },
+          "color": {
+            "value": "black"
+          },
+          "opacity": {
+            "condition": {
+              "test": "datum['START_POS_FLAG'] == 1",
+              "value": 1
+            },
+            "value": 0
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "bottom",
+          "dx": -12,
+          "dy": -5,
+          "fontSize": 12,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {
+            "value": "Game 30"
+          },
+          "color": {
+            "value": "black"
+          },
+          "opacity": {
+            "condition": {
+              "test": "datum['ORDER'] == 30",
+              "value": 1
+            },
+            "value": 0
+          },
+          "tooltip": [
+            {
+              "field": "ORDER",
+              "title": "Game"
+            }
+          ]
+        }
+      }
     ]
-}
+  }
