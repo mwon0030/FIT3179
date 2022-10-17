@@ -19,6 +19,7 @@
       "bind": {
         "input": "select",
         "options": [
+          "None",
           "James Harden",
           "Anthony Davis",
           "LeBron James",
@@ -31,6 +32,7 @@
           "Danny Green"
         ],
         "labels": [
+          "None",
           "James Harden",
           "Anthony Davis",
           "LeBron James",

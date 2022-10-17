@@ -44,7 +44,7 @@
     },
     "y": {
       "bin": {
-        "maxbins": 10
+        "maxbins": 15
       },
       "field": "WEIGHT_KG",
       "type": "quantitative",

@@ -6,6 +6,7 @@
 p {
   font-family: myFont;
   font-size: 14px;
+  line-height: 22px;
 }
 
 select {
@@ -20,7 +21,7 @@ select {
 .columns {
   display: grid;
   grid-template-columns: 60% 40%;
-  width: 1200px;
+  width: 1080px;
   margin: auto;
 }
 
@@ -39,13 +40,10 @@ select {
     position: relative;
     height: 700px;
     top: 70px;
-    left: 80px;
-    display: grid;
     place-items: left;
   }
   
   #shot_chart {
-    display: grid;
     place-items: center;
   }
 
@@ -53,27 +51,24 @@ select {
     position: relative;
     height: 700px;
     top: 170px;
-    left: 45px;
-    display: grid;
     place-items: left;
   }
   
   #squiggle {
-    display: grid;
     place-items: center;
+    right: 50px;
   }
 
 #container3 {
     position: relative;
     top: 170px;
-    left: 60px;
     height: 700px;
     display: grid;
     place-items: left;
   }
   
   #radar {
-    top: -70px;
+    top: -60px;
     right: 220px;
     display: grid;
     place-items: center;
@@ -85,20 +80,20 @@ select {
   display: grid;
   place-items: left;
   top: 270px;
-  left: 50px;
   height: 700px;
 }
 
   #heatmap {
     display: grid;
     place-items: center;
+    right: 50px;
   }
 
 #container5 {
   position: relative;
   display: grid;
   place-items: left;
-  top: 70px;
+  top: 120px;
   height: 700px;
 }
 
@@ -107,7 +102,7 @@ select {
   display: grid;
   place-items: left;
   height: 700px;
-  top: 170px;
+  top: 180px;
 }
 
 #container7 {
@@ -115,7 +110,7 @@ select {
   display: grid;
   place-items: left;
   height: 700px;
-  top: 370px;
+  top: 300px;
 }
 
 #container8 {
@@ -123,5 +118,5 @@ select {
   display: grid;
   place-items: left;
   height: 700px;
-  top: 270px;
+  top: 400px;
 }

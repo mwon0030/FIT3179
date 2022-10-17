@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "title": "Comparing key stats of two NBA players during the 2015-16 season",
+  "title": "Comparing Key Stats of Two NBA Players over the 2015-16 Season",
   "width": 820,
   "height": 820,
   "padding": 220,

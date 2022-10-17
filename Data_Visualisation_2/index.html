@@ -17,7 +17,7 @@
 					<div id = "shot_chart">
 						<script type = "text/javascript">
                             var vg_1 = "js/visualise_shot_chart.json";
-                            vegaEmbed("#shot_chart", vg_1).then(function(result) {
+                            vegaEmbed("#shot_chart", vg_1, {"actions": false}).then(function(result) {
                             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
                             }).catch(console.error);
                         </script>
@@ -27,7 +27,7 @@
 					<div id = "squiggle">
 						<script type = "text/javascript">
                             var vg_2 = "js/visualise_squiggle.json";
-                            vegaEmbed("#squiggle", vg_2).then(function(result) {
+                            vegaEmbed("#squiggle", vg_2, {"actions": false}).then(function(result) {
                             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
                             }).catch(console.error);
                         </script>
@@ -37,7 +37,7 @@
 					<div id = "radar">
 						<script type = "text/javascript">
                             var vg_3 = "js/visualise_radar.json";
-                            vegaEmbed("#radar", vg_3).then(function(result) {
+                            vegaEmbed("#radar", vg_3, {"actions": false}).then(function(result) {
                             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
                             }).catch(console.error);
                         </script>
@@ -46,8 +46,8 @@
 				<div id = "container4">
 					<div id = "heatmap">
 						<script type = "text/javascript">
-                            var vg_3 = "js/visualise_heatmap.json";
-                            vegaEmbed("#heatmap", vg_3).then(function(result) {
+                            var vg_4 = "js/visualise_heatmap.json";
+                            vegaEmbed("#heatmap", vg_4, {"actions": false}).then(function(result) {
                             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
                             }).catch(console.error);
                         </script>
@@ -56,16 +56,75 @@
 			</div>
 			<div class = "column2">
 				<div id = "container5">
-					<p> testing1 </p>
+					<p> 
+                        This visualisation shows the location of each shot a player took throughout the 2015-16 regular season,
+                        which means finals and all-star games are excluded from the dataset. Initially, the chart will be blank
+                        as no player has been selected yet. Upon selecting a player, all the shot locations of that player will
+                        loaded onto the chart. The legend on the top right shows which colour denotes a scored or missed shot. The
+                        longest shot attempted is annotated for each player. Hovering over each point also provides more information
+                        about the shot, such as the action that was used to take the shot, what type of shot it was, and the shot zone.
+                        <br><br>
+                        The differences between each player's shot chart generally reflect the position they play. Point guards and 
+                        shooting guards such as Stephen Curry and Danny Green spend a lot of their time outside of the three-point arc 
+                        (the large arc line), which is why many of their shots are behind the three-point line. Power forwards and centers 
+                        such as Blake Griffin and Rudy Gobert play mostly inside the three-point arc and the key (the rectangle inside 
+                        the three-point line), which is reflected in their respective shot charts. Not only can positional differences be 
+                        observed, but also each player's play style, for example with Lebron James, most of his shots are taken on the 
+                        left side of the court. 
+                    </p>
 				</div>
                 <div id = "container6">
-					<p> testing2 </p>
+					<p> 
+                        This visualisation shows how a team's offence and defence has changed throughout the first 30 games of the season.
+                        The calculation for offensive and defensive rating is complicated, however they essentially represent how efficient
+                        a team's offence or defence is, where a higher rating is better. The lines show the progression of each team 
+                        throughout the first 30 games, and the points represent where each team is offensively and defensively rated after each
+                        game they have played. The rating values shown are a 10 game moving average as this is a better way to visualise 
+                        how a team is tracking, since all teams will experience a large variance in performance throughout a long 82 game
+                        season. The legend on the top right denotes which colour is associated with which team. The drop down list on the
+                        bottom can be used to display all teams or one team at a time. Hovering over a point will reveal which game
+                        number the team has just played. The annotations highlight the first game and the 30th game played. 
+                        <br><br>
+                        From the three teams shown, each team has improved in some capacity from where they started. The Cavaliers improved
+                        by 7 offensive rating points while their defensive rating has dropped 2 points. The Rockets have significantly
+                        improved their offence by 22 points however their defence has receded by 5 points. The Warriors are the only team
+                        that improved in both offence and defence by gaining 8 and 3 points respectively. Both the Cavaliers and the Rockets
+                        experienced large improvements early on in the season, however the Cavaliers started to drop off after game 15 and
+                        the Rockets began to decline after game 25. 
+                    </p>
 				</div>
                 <div id = "container7">
-					<p> testing3 </p>
+					<p>  
+                        This visualisation shows how skilled a player is in one aspect of the game in comparison to other players. The radar line
+                        chart makes it easy to compare many categories at once by placing each category equidistantly.
+                        The larger the area of the radar, the more well rounded a player is, and the closer the tip of the radar is to the labelled
+                        category, the better the player is in that statistic. The statistics shown are points (PTS), rebounds (REB), assists
+                        (AST), steals (STL) and blocks (BLK). Points are the points gained by scoring a shot, rebounds are acquired by being the
+                        first to possess the ball after a missed shot, assists are given when a teammate scores directly after they were passed the ball, steals
+                        are when a player takes possession of the ball off an opponent and blocks are given when a player blocks an opponents'
+                        shot while they are in their shooting motion. The numbers annotated on the graph are the average number of that statistic a
+                        player has accumulated per game. This average is taken over the entire regular season. The legend shows which colour is 
+                        associated with which player. 
+                        <br><br>
+                        The differences between the two players can be explained by their difference of position and physique. Russell Westbrook
+                        is a point guard who is responsible for distributing the ball to their teammates. Typically this means they have more
+                        possession of the ball which allows them to score more points as well as pass the ball to teammates to give them the opportunity 
+                        to score leading to more assists. Rudy Gobert is a center who is responsible for rebounding the ball and protecting 
+                        close range shots. They are generally the tallest players in the team which makes it easier for them to rebound the ball
+                        as well as block their opponents' shots. 
+                    </p>
 				</div>
                 <div id = "container8">
-					<p> testing4 </p>
+					<p> 
+                        This visualisation shows the distribution of the height and weight of active NBA players. The weight is measured in 
+                        kilograms (KG) while the height is measured in centimeters (CM). The legend shows a color scale that represents the
+                        number of players for each height and weight range. Hovering over a rectangle on the chart will reveal the exact number
+                        of players for the given height and weight range.
+                        <br><br>
+                        From the visualisation, a majority of the players are within 190-215 centimeters tall and 85-115 kilograms heavy. The highest
+                        number of players within a height and weight range has 44 players within 195-200CM and 95-100KG. The tallest and heaviest 
+                        active NBA player is in a class of his own standing between 225-230CM tall and weighing 140-145KG. 
+                    </p>
 				</div>
 			</div>
 		</div>

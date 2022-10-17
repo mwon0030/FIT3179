@@ -1,6 +1,6 @@
 {
     "schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Team rating throughout the first 30 games of the 2015-16 season",
+    "title": "Team Rating for the First 30 Games of the 2015-16 Season",
     "config": {
       "font": "myFont",
       "title": {
@@ -72,7 +72,7 @@
         "scale": {
           "domain": [
             85,
-            125
+            120
           ]
         },
         "axis": {
