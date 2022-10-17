@@ -76,7 +76,12 @@
   },
     "layer": [
       {
-        "mark": "point"
+        "mark": "point",
+        "encoding": {
+          "color": {
+            "value": "#c27ba0"
+          }
+        }
       },
       {
         "mark": {
