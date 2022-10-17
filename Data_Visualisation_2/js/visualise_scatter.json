@@ -23,47 +23,83 @@
   },
   "transform": [
     {
-      "filter": "datum['HEIGHT_CM'] >= 150 && datum['WEIGHT_KG'] >= 50"
+      "filter": "datum['HEIGHT_CM'] >= 15 && datum['WEIGHT_KG'] >= 5"
     }
   ],
-  "mark": "rect",
   "width": 460,
   "height": 520,
   "encoding": {
     "x": {
-      "bin": {
-        "maxbins": 25
-      },
       "field": "HEIGHT_CM",
       "type": "quantitative",
       "title": "Height (CM)",
       "axis": {
         "titleFontSize": 14,
         "labelFontSize": 14
+      },
+      "scale": {
+        "domain": [
+          175, 
+          230
+          ]
       }
     },
     "y": {
-      "bin": {
-        "maxbins": 15
-      },
       "field": "WEIGHT_KG",
       "type": "quantitative",
       "title": "Weight (KG)",
       "axis": {
         "titleFontSize": 14,
         "labelFontSize": 14
+      },
+      "scale": {
+        "domain": [
+          70,
+          145
+        ]
       }
     },
-    "color": {
-      "aggregate": "count",
-      "type": "quantitative",
-      "title": "Number of Players"
-    },
     "tooltip": [
+      {
+        "field": "HEIGHT_CM",
+        "title": "Height"
+      },
+      {
+        "field": "WEIGHT_KG",
+        "title": "Weight"
+      },
       {
         "aggregate": "count",
         "title": "Number of Players"
       }
     ]
-  }
+  },
+    "layer": [
+      {
+        "mark": "point"
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "bottom",
+          "dx": -50,
+          "dy": -20,
+          "fontSize": 12,
+          "fontStyle": "italic"
+        },
+        "encoding": {
+          "text": {
+            "value": ["Tallest and", "Heaviest Player"]
+          },
+        "opacity": {
+          "condition": {
+            "test": "datum['WEIGHT_KG'] > 140",
+            "value": 1
+          },
+          "value": 0
+        }
+        }
+      }
+    ]
 }

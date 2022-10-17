@@ -83,7 +83,7 @@ select {
   height: 700px;
 }
 
-  #heatmap {
+  #scatter {
     display: grid;
     place-items: center;
     right: 50px;
@@ -118,5 +118,5 @@ select {
   display: grid;
   place-items: left;
   height: 700px;
-  top: 400px;
+  top: 450px;
 }

@@ -44,10 +44,10 @@
 					</div>
 				</div>
 				<div id = "container4">
-					<div id = "heatmap">
+					<div id = "scatter">
 						<script type = "text/javascript">
-                            var vg_4 = "js/visualise_heatmap.json";
-                            vegaEmbed("#heatmap", vg_4, {"actions": false}).then(function(result) {
+                            var vg_4 = "js/visualise_scatter.json";
+                            vegaEmbed("#scatter", vg_4, {"actions": false}).then(function(result) {
                             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
                             }).catch(console.error);
                         </script>
@@ -117,13 +117,11 @@
                 <div id = "container8">
 					<p> 
                         This visualisation shows the distribution of the height and weight of active NBA players. The weight is measured in 
-                        kilograms (KG) while the height is measured in centimeters (CM). The legend shows a color scale that represents the
-                        number of players for each height and weight range. Hovering over a rectangle on the chart will reveal the exact number
-                        of players for the given height and weight range.
+                        kilograms (KG) while the height is measured in centimeters (CM). Hovering over a point on the chart will reveal the exact number
+                        of players for the given height and weight.
                         <br><br>
-                        From the visualisation, a majority of the players are within 190-215 centimeters tall and 85-115 kilograms heavy. The highest
-                        number of players within a height and weight range has 44 players within 195-200CM and 95-100KG. The tallest and heaviest 
-                        active NBA player is in a class of his own standing between 225-230CM tall and weighing 140-145KG. 
+                        From the visualisation, a majority of the players are within 190-215 centimeters tall and 85-115 kilograms heavy. The tallest and
+                        heaviest player is approximately 228CM tall and 141KG heavy. The shortest players are 177CM tall and the lightest player is 73KG heavy.
                     </p>
 				</div>
 			</div>
