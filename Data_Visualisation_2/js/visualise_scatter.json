@@ -61,14 +61,6 @@
     },
     "tooltip": [
       {
-        "field": "HEIGHT_CM",
-        "title": "Height"
-      },
-      {
-        "field": "WEIGHT_KG",
-        "title": "Weight"
-      },
-      {
         "aggregate": "count",
         "title": "Number of Players"
       }
